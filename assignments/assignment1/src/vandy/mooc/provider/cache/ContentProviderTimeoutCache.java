@@ -221,6 +221,11 @@ public class ContentProviderTimeoutCache
             // expansions create a ContentValues object that contains
             // their contents, and store this into the appropriate
             // location the cvArray.
+        	cvArray[i].put(AcronymEntry.COLUMN_ACRONYM, acronym);
+        	cvArray[i].put(AcronymEntry.COLUMN_LONG_FORM, longForms.get(i).getLf());
+        	cvArray[i].put(AcronymEntry.COLUMN_FREQUENCY, longForms.get(i).getFreq());
+        	cvArray[i].put(AcronymEntry.COLUMN_SINCE, longForms.get(i).getSince());
+        	cvArray[i].put(AcronymEntry.COLUMN_EXPIRATION_TIME, expirationTime);
         }
 
         // Use ContentResolver to bulk insert the ContentValues into
@@ -244,6 +249,9 @@ public class ContentProviderTimeoutCache
         String[] selectionArgs = { acronym };
 
         // TODO - delete the row(s) associated with an acronym.
+        mContext.getContentResolver().delete(AcronymEntry.CONTENT_URI,
+        										SELECTION_ACRONYM,
+        										selectionArgs);
     }
 
     /**
@@ -280,6 +288,9 @@ public class ContentProviderTimeoutCache
         };
 
         // TODO -- delete expired acronym expansions.
+        mContext.getContentResolver().delete(AcronymEntry.CONTENT_URI,
+        										SELECTION_EXPIRATION,
+												selectionArgs);
     }
 
     /**
