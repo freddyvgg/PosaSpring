@@ -46,8 +46,14 @@ public class VideoFileManager {
 	 * @return
 	 * @throws IOException
 	 */
-	public static VideoFileManager get() throws IOException {
-		return new VideoFileManager();
+	public static VideoFileManager get() {
+		try {
+			return new VideoFileManager();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	private Path targetDir_ = Paths.get("videos");
