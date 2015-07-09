@@ -176,6 +176,7 @@ public class AcronymOps
             Log.v(TAG,
                   "doInBackground() "
                   + e);
+            e.printStackTrace();
             return null;
         }
     }

@@ -219,6 +219,7 @@ public class ContentProviderTimeoutCache
             // expansions create a ContentValues object that contains
             // their contents, and store this into the appropriate
             // location the cvArray.
+            cvArray[i]= new ContentValues();
         	cvArray[i].put(AcronymEntry.COLUMN_ACRONYM, acronym);
         	cvArray[i].put(AcronymEntry.COLUMN_LONG_FORM, longForms.get(i).getLf());
         	cvArray[i].put(AcronymEntry.COLUMN_FREQUENCY, longForms.get(i).getFreq());
